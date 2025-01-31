@@ -1,6 +1,4 @@
-package org.leetcode.examples.linkedlist;
-
-import java.io.*;
+package org.leetcode.examples.linkedlist.oldVersion;
 
 // Java program to implement
 // a Singly Linked List
@@ -77,7 +75,8 @@ public class LinkedList {
     public static LinkedList deleteByKey(LinkedList list,
                                          int key) {
         // Store head node
-        Node currNode = list.head, prev = null;
+        Node currNode = list.head;
+        Node prev = null;
 
         //
         // CASE 1:
@@ -139,7 +138,8 @@ public class LinkedList {
     // Method to delete a node in the LinkedList by POSITION
     public static LinkedList deleteAtPosition(LinkedList list, int index) {
         // Store head node
-        Node currNode = list.head, prev = null;
+        Node currNode = list.head;
+        Node prev = null;
 
         //
         // CASE 1:
@@ -236,10 +236,10 @@ public class LinkedList {
 
         // Delete node with value 1
         // In this case the key is ***at head***
-        deleteByKey(list, 1);
+        //deleteByKey(list, 1);
 
         // Print the LinkedList
-        printList(list);
+        //printList(list);
 
         // Delete node with value 4
         // In this case the key is present ***in the
