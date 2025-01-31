@@ -201,6 +201,43 @@ public class LinkedListOperations {
         return list;
     }
 
+    public static Node middleNode(Node head) {
+        // Base Condition
+        if (head.next == null) {
+            return head;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+
+    static boolean detectLoop(Node head) {
+
+        // Fast and slow pointers initially points to the head
+        Node slow = head, fast = head;
+
+        // Loop that runs while fast and slow pointer are not
+        // null and not equal
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            // If fast and slow pointer points to the same node,
+            // then the cycle is detected
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // This function prints the contents
     // of the linked list starting from the head
     static void printList(Node node) {
@@ -213,73 +250,91 @@ public class LinkedListOperations {
     public static void main(String[] args) {
 
         // Create a hard-coded linked list:
-        // 1 -> 2 -> 3 -> 4 -> 5
+        // 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
         Node head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
         head.next.next.next.next = new Node(5);
+        head.next.next.next.next.next = new Node(6);
+        head.next.next.next.next.next.next = new Node(7);
 
         System.out.print("Given Linked list:");
         printList(head);
 
-        // ******INSERTION******
-        insert(head, 80);
-        System.out.print("\n");
-        printList(head);
+//        // ******INSERTION******
+//        insert(head, 80);
+//        System.out.print("\n");
+//        printList(head);
+//
+//        head = reverseList(head);
+//
+//        System.out.print("\n");
+//        System.out.print("\nReversed Linked List:");
+//        printList(head);
+//
+//
+//        // Delete node with value 4
+//        // In this case the key is present ***in the
+//        // middle***
+//        deleteByKey(head, 4);
+//
+//        // Print the LinkedList
+//        System.out.print("\n");
+//        printList(head);
+//
+//        // Delete node with value 10
+//        // In this case the key is ***not present***
+//        deleteByKey(head, 10);
+//
+//        // Print the LinkedList
+//        System.out.print("\n");
+//        printList(head);
+//
+//        //
+//        // ******DELETION AT POSITION******
+//        //
+//
+//        // Delete node at position 0
+//        // In this case the key is ***at head***
+//        head = deleteAtPosition(head, 0);
+//
+//        // Print the LinkedList
+//        System.out.print("\n");
+//        printList(head);
+//
+//        // Delete node at position 2
+//        // In this case the key is present ***in the
+//        // middle***
+//        deleteAtPosition(head, 2);
+//
+//        // Print the LinkedList
+//        System.out.print("\n");
+//        printList(head);
+//
+//        // Delete node at position 10
+//        // In this case the key is ***not present***
+//        deleteAtPosition(head, 10);
+//
+//        // Print the LinkedList
+//        System.out.print("\n");
+//        printList(head);
 
-        head = reverseList(head);
+//        head = middleNode(head);
+//
+//        // Print the LinkedList
+//        System.out.print("\n");
+//        printList(head);
 
-        System.out.print("\n");
-        System.out.print("\nReversed Linked List:");
-        printList(head);
+        // Create a loop
+        head.next.next.next = head.next;
 
-
-        // Delete node with value 4
-        // In this case the key is present ***in the
-        // middle***
-        deleteByKey(head, 4);
-
-        // Print the LinkedList
-        System.out.print("\n");
-        printList(head);
-
-        // Delete node with value 10
-        // In this case the key is ***not present***
-        deleteByKey(head, 10);
-
-        // Print the LinkedList
-        System.out.print("\n");
-        printList(head);
-
-        //
-        // ******DELETION AT POSITION******
-        //
-
-        // Delete node at position 0
-        // In this case the key is ***at head***
-        head = deleteAtPosition(head, 0);
-
-        // Print the LinkedList
-        System.out.print("\n");
-        printList(head);
-
-        // Delete node at position 2
-        // In this case the key is present ***in the
-        // middle***
-        deleteAtPosition(head, 2);
-
-        // Print the LinkedList
-        System.out.print("\n");
-        printList(head);
-
-        // Delete node at position 10
-        // In this case the key is ***not present***
-        deleteAtPosition(head, 10);
-
-        // Print the LinkedList
-        System.out.print("\n");
-        printList(head);
+        if (detectLoop(head)) {
+            System.out.print("\n");
+            System.out.println("true");
+        } else {
+            System.out.print("\n");
+            System.out.println("false");
+        }
     }
-
 }
