@@ -3,9 +3,8 @@ package org.leetcode.examples.recursion;
 
 import org.leetcode.examples.recursion.model.Node;
 
-import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Stack;
 
 public class Recursion {
 
@@ -74,6 +73,102 @@ public class Recursion {
         return arr;
     }
 
+    // Actual work start's from here
+    public static Stack<Integer> sortStack(Stack<Integer> st) {
+        if (st.size() == 1) return st; // Base Condition
+        // Hypothesis
+        int temp = st.pop(); // getting 2 out
+        sortStack(st); // sorting the stack from [5,1,0] -> [0,1,5]
+
+        return insertElementAtStack(st, temp);
+    }
+
+    public static Stack<Integer> insertElementAtStack(Stack<Integer> st, int temp) {
+        // Base Condition
+        if (st.size() == 0 || temp >= st.peek()) { // checking if let say we have 6 in temp & 6 is greater then 5
+            st.push(temp); // we will simply add it into our stack
+            return st;
+        }
+        // Hypothesis
+        int val = st.pop(); // getting 5 out stack becomes -> [0,1]
+        insertElementAtStack(st, temp); // insrting 2 to [0,1] which becomes -> [0,1,2]
+        // Induction
+        st.push(val); // adding 5 to [0,1,2] which becomes -> [0,1,2,5]
+        return st;
+    }
+
+        // Deletes middle of stack of size
+    // n. Curr is current item number
+    static void deleteMid(Stack<Integer> st, int n, int curr)
+    {
+
+        // If stack is empty or all items
+        // are traversed
+        if (st.empty() || curr == n)
+            return;
+
+        // Remove current item
+        Integer x = st.pop();
+
+        // Remove other items
+        deleteMid(st, n, curr+1);
+
+        // Put all items back except middle
+        if (curr != n / 2)
+            st.push(x);
+    }
+
+//    public static void reverse(Stack<Integer> st) {
+//        // Base Condition
+//        if(st.size() == 1) return ;
+//
+//        // Hypothesis
+//        int temp = st.pop(); // removing 5 from stack
+//        reverse(st); // reversing the stack
+//        insert(st, temp); // func. call
+//    }
+//    public static Stack<Integer> solve(Stack<Integer> st, int temp) {
+//        // Base Condition
+//        if(st.size() == 0){
+//            st.push(temp);
+//            return st;
+//        }
+//
+//        // Hypothesis
+//        int val = st.pop(); // removing 1 from stack
+//        insert(st, temp); // inserting 5 to stack;
+//
+//        // Induction
+//        st.push(val); // inserting 1 to stack
+//        return st;
+//    }
+
+//    public static void midDel(Stack<Integer> st) {
+//        // Base Condition
+//        if (st.size() == 0)
+//            return ;
+//
+//        // Hypothesis
+//        int k = st.size() / 2 + 1; // calculating mid
+//        solve(st, k); // func. call
+//    }
+//
+//    public static Stack<Integer> solve(Stack<Integer> st, int k) {
+//        // Base Condition
+//        if (st.size() == 1) {
+//            st.pop();
+//            return st;
+//        }
+//
+//        // Hypothesis
+//        int temp = st.pop(); // removing 5 from stack
+//        solve(st, k - 1);
+//
+//        // Induction
+//        st.push(temp);
+//        return st;
+//    }
+
     public static void main(String[] args) {
 //        solveValueToN(7);
 //        System.out.println("\n");
@@ -94,9 +189,39 @@ public class Recursion {
 //
 //        System.out.println(maxDepth(root));
 
-        ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(11, 8, 9, 3, 0, 1, 2));
-        System.out.println(sort(arr));
+//        ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(11, 8, 9, 3, 0, 1, 2));
+//        System.out.println(sort(arr));
+
+        Stack<Integer> st = new Stack<>();
+        st.push(5);
+        st.push(1);
+        st.push(7);
+        st.push(2);
+        st.push(8);
+        st.push(0);
+
+        System.out.println("Stack before:");
+        for (Integer s : st) {
+            System.out.print(s + " ");
+        }
+
+//        System.out.println("\nStack after sorting:");
+//        Stack<Integer> sorted = sortStack(st);
+//        for (Integer i : sorted) {
+//            System.out.print(i + " ");
+//        }
+
+        System.out.println("\nStack after has is middle element removed:");
+        deleteMid(st, st.size(), 0);
+        //midDel(st);
+        for (Integer i : st) {
+            System.out.print(i + " ");
+        }
+        System.out.println("\n");
     }
+
+
+
 
 
 }
