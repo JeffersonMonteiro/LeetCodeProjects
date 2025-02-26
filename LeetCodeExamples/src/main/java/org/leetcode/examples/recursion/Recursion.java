@@ -118,57 +118,57 @@ public class Recursion {
             st.push(x);
     }
 
-//    public static void reverse(Stack<Integer> st) {
-//        // Base Condition
-//        if(st.size() == 1) return ;
-//
-//        // Hypothesis
-//        int temp = st.pop(); // removing 5 from stack
-//        reverse(st); // reversing the stack
-//        insert(st, temp); // func. call
-//    }
-//    public static Stack<Integer> solve(Stack<Integer> st, int temp) {
-//        // Base Condition
-//        if(st.size() == 0){
-//            st.push(temp);
-//            return st;
-//        }
-//
-//        // Hypothesis
-//        int val = st.pop(); // removing 1 from stack
-//        insert(st, temp); // inserting 5 to stack;
-//
-//        // Induction
-//        st.push(val); // inserting 1 to stack
-//        return st;
-//    }
+    // Below is a recursive function
+    // that inserts an element
+    // at the bottom of a stack.
+    static void insert_at_bottom(Integer x, Stack<Integer> st)
+    {
 
-//    public static void midDel(Stack<Integer> st) {
-//        // Base Condition
-//        if (st.size() == 0)
-//            return ;
-//
-//        // Hypothesis
-//        int k = st.size() / 2 + 1; // calculating mid
-//        solve(st, k); // func. call
-//    }
-//
-//    public static Stack<Integer> solve(Stack<Integer> st, int k) {
-//        // Base Condition
-//        if (st.size() == 1) {
-//            st.pop();
-//            return st;
-//        }
-//
-//        // Hypothesis
-//        int temp = st.pop(); // removing 5 from stack
-//        solve(st, k - 1);
-//
-//        // Induction
-//        st.push(temp);
-//        return st;
-//    }
+        if (st.isEmpty())
+            st.push(x);
 
+        else {
+
+            // All items are held in Function
+            // Call Stack until we reach end
+            // of the stack. When the stack becomes
+            // empty, the st.size() becomes 0, the
+            // above if part is executed and
+            // the item is inserted at the bottom
+            Integer a = st.peek();
+            st.pop();
+            insert_at_bottom(x, st);
+
+            // push allthe items held
+            // in Function Call Stack
+            // once the item is inserted
+            // at the bottom
+            st.push(a);
+        }
+    }
+
+    // Below is the function that
+    // reverses the given stack using
+    // insert_at_bottom()
+    static void reverse(Stack<Integer> st)
+    {
+        if (st.size() > 0) {
+
+            // Hold all items in Function
+            // Call Stack until we
+            // reach end of the stack
+            Integer x = st.peek();
+            st.pop();
+            reverse(st);
+
+            // Insert all the items held
+            // in Function Call Stack
+            // one by one from the bottom
+            // to top. Every item is
+            // inserted at the bottom
+            insert_at_bottom(x, st);
+        }
+    }
     public static void main(String[] args) {
 //        solveValueToN(7);
 //        System.out.println("\n");
@@ -211,9 +211,17 @@ public class Recursion {
 //            System.out.print(i + " ");
 //        }
 
-        System.out.println("\nStack after has is middle element removed:");
-        deleteMid(st, st.size(), 0);
-        //midDel(st);
+//        System.out.println("\nStack after has is middle element removed:");
+//        deleteMid(st, st.size(), 0);
+//        //midDel(st);
+//        for (Integer i : st) {
+//            System.out.print(i + " ");
+//        }
+//        System.out.println("\n");
+
+
+        System.out.println("\nStack after to be reversed:");
+        reverse(st);
         for (Integer i : st) {
             System.out.print(i + " ");
         }
