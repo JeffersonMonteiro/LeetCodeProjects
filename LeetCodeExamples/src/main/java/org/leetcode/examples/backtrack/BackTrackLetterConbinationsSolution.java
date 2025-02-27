@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class LetterConbinationsSolution {
+public class BackTrackLetterConbinationsSolution {
     public List<String> letterCombinations(String digits) {
         HashMap<Character, String> numberToLettersMapping = new HashMap<>();
         numberToLettersMapping.put('2', "abc");
@@ -43,7 +43,7 @@ public class LetterConbinationsSolution {
     }
 
     public static void main(String[] args) {
-        LetterConbinationsSolution letterConbinationsSolution = new LetterConbinationsSolution();
-        letterConbinationsSolution.letterCombinations("24").forEach(System.out::println);
+        BackTrackLetterConbinationsSolution backTrackLetterConbinationsSolution = new BackTrackLetterConbinationsSolution();
+        backTrackLetterConbinationsSolution.letterCombinations("24").forEach(System.out::println);
     }
 }
