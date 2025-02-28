@@ -70,4 +70,11 @@ public class BackTrackRemoveInvalidParenthesis {
             }
         }
     }
+
+    public static void main(String[] args) {
+        BackTrackRemoveInvalidParenthesis rip = new BackTrackRemoveInvalidParenthesis();
+        rip.removeInvalidParentheses("()())()").forEach(System.out::println);
+        //rip.removeInvalidParentheses("(a)())()").forEach(System.out::println);
+        //rip.removeInvalidParentheses(")(").forEach(System.out::println);
+    }
 }
