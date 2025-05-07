@@ -1,8 +1,6 @@
 package org.leetcode.examples.bubleSort;
 
 public class PatientWaitList {
-
-
     public static void orderByPriorityAndTime(String[] list, int items) {
         boolean swapped;
         for (int i = 0; i < items - 1; i++) {
@@ -29,16 +27,16 @@ public class PatientWaitList {
     }
 
     // Function to print an array
-    static void printArray(String arr[], int size){
+    static void printArray(String arr[], int size) {
         int i;
         for (i = 0; i < size; i++)
             System.out.print(arr[i] + " ");
         System.out.println();
     }
 
-
     public static void main(String[] args) {
-        String[] list = {"P4:5:110", "P2:4:115", "P3:8:224", "P1:9:789", "P7:5:115", "P9:4:147"};
+        String[] list = {"P4:5:110", "P2:4:115", "P3:8:224", "P1:9:789", "P7:5:115"
+                , "P9:4:147", "P6:5:236", "P10:10:456", "P11:5:123"};
         int items = list.length;
         orderByPriorityAndTime(list, items);
         printArray(list, items);
