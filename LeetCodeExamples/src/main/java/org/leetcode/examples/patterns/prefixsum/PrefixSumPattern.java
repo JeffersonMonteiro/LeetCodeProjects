@@ -1,8 +1,5 @@
 package org.leetcode.examples.patterns.prefixsum;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PrefixSumPattern {
 
     public static void main(String[] args) {
