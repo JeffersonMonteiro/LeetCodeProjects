@@ -12,16 +12,39 @@ public class FrequencyOfTheMostFrequentElement {
         System.out.println(maxFrequency(nums, K));
     }
 
-    public static int maxFrequencyWrongOption(int[] nums, int k) {
+    public static int maxFrequency(int[] nums, int k) {
         Arrays.sort(nums);
+        int left = 0;
+        int result = 0;
+        long total = 0;
 
-        int left = 0, right = 0;
-        int result = 0, total = 0;
-
-        while (right < nums.length) {
+        for (int right = 0; right < nums.length; right++) {
+            long currentRight = nums[right];
             total += nums[right];
 
-            while ( (right - left + 1) * nums[right] - total > k) {
+            while ((right - left + 1) * currentRight - total > k) {
+                total -= nums[left];
+                left++;
+            }
+
+            result = Math.max(result, right - left + 1);
+        }
+
+        return result;
+    }
+
+
+    public static int maxFrequencyOption2(int[] nums, int k) {
+        Arrays.sort(nums);
+
+        int left = 0, right = 0, result = 0;
+        long total = 0;
+
+        while (right < nums.length) {
+            long current =  nums[right];
+            total += nums[right];
+
+            while ((right - left + 1) * current - total > k) {
                 total -= nums[left];
                 left++;
             }
@@ -30,26 +53,5 @@ public class FrequencyOfTheMostFrequentElement {
             right++;
         }
         return result;
-    }
-
-    public static int maxFrequency(int[] nums, int k) {
-        Arrays.sort(nums);
-        int left = 0;
-        int ans = 0;
-        long curr = 0;
-
-        for (int right = 0; right < nums.length; right++) {
-            long target = nums[right];
-            curr += target;
-
-            while ((right - left + 1) * target - curr > k) {
-                curr -= nums[left];
-                left++;
-            }
-
-            ans = Math.max(ans, right - left + 1);
-        }
-
-        return ans;
     }
 }
