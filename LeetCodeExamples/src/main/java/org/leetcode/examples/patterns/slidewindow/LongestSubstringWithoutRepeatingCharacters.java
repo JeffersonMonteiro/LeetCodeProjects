@@ -29,33 +29,25 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println(lengthOfLongestSubstring("abcabcbb"));
     }
 
-    public static int lengthOfLongestSubstring(String s){
+    public static int lengthOfLongestSubstring(String s) {
         Set<Character> set = new HashSet<>(); // To track the characters in the current SubString
         int maxLength = 0; //Store the maximum length of substring found
         int left = 0; //left pointer of the window
 
         //Right pointer expands the window
-        for (int right = 0; right < s.length(); right++){
+        for (int right = 0; right < s.length(); right++) {
             char currentChar = s.charAt(right);
 
             //if duplicate is found, shrink the window from the left
-            while (set.contains(currentChar)){
+            while (set.contains(currentChar)) {
                 set.remove(s.charAt(left));
                 left++;
-
             }
 
             //Add the current character to the set
             set.add(currentChar);
-
-            maxLength = Math.max(maxLength, right - left +1);
-
+            maxLength = Math.max(maxLength, right - left + 1);
         }
-
         return maxLength;
-
-
-
     }
-
 }
