@@ -42,42 +42,4 @@ public class TripletsSum {
         }
         return res;
     }
-
-//    public static List<List<Integer>> threeSum(int[] nums) {
-//        int left = 0;
-//        int leftPlus = 1;
-//        int right = nums.length -1;
-//        Collections.sort(Arrays.asList(Arrays.stream(nums).boxed().toArray(Integer[]::new)));
-//        List<List<Integer>> resultList = new ArrayList<>();
-//
-//        while(leftPlus != nums.length -1){
-//            int sum = nums[left]+ nums[leftPlus] + nums[right];
-//
-//            // Move the pointer pointing to the shorter height
-//            if (sum != 0) {
-//                if(right == left || right == leftPlus){
-//                    right--; // Move right pointer backward
-//                }else{
-//                    right--; // Move right pointer backward
-//                    left++; // Move left pointer forward
-//                    leftPlus++;
-//                }
-//            } else{
-//                if(left != leftPlus && leftPlus != right && right != left){
-//                    int [] triplets = {nums[left], nums[leftPlus], nums[right]};
-//                    resultList.add(Arrays.asList(Arrays.stream(triplets).boxed().toArray(Integer[]::new)));
-//                    if(right == left || right == leftPlus){
-//                        right--; // Move right pointer backward
-//                    }else{
-//                        right--; // Move right pointer backward
-//                        left++; // Move left pointer forward
-//                        leftPlus++;
-//                    }
-//                }else{
-//                    break;
-//                }
-//            }
-//        }
-//        return resultList;
-//    }
 }
