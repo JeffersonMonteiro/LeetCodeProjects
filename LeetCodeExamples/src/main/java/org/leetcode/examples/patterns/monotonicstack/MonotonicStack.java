@@ -5,6 +5,11 @@ import java.util.Stack;
 
 public class MonotonicStack {
 
+    //Useful to find the next greater element
+    //Useful to find the next smaller element
+    //Useful to find the previous greater element
+    //Useful to find the previous smaller element
+
     //Time complexity O(n) -- BEST PERFORMANCE FOR HUGE ARRAYS
     //Find the next Greater element for each number in an array
     static int[] nextGreaterElement(int[] nums) {
