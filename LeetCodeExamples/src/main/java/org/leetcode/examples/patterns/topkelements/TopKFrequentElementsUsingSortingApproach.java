@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TopKFrequentElements {
+public class TopKFrequentElementsUsingSortingApproach {
 
     /*
      * ********** LeetCode 347 - Top K Frequent Elements (https://leetcode.com/problems/top-k-frequent-elements/description/) **********
