@@ -181,6 +181,6 @@ public class TreeOperations {
 
         //iterativeInorderTraversal(head).forEach(System.out::println);
 
-        //iterativePostorderTraversal(head).forEach(System.out::println);
+        //iterativePostorderTraversal(head).forEach(System.out::println);binary
     }
 }
