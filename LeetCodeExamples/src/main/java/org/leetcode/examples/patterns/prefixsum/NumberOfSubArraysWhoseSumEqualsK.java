@@ -19,24 +19,22 @@ public class NumberOfSubArraysWhoseSumEqualsK {
     }
 
     public static int subarray(int[] numsArray, int K) {
-        int prefixSum = 0;
-        int count = 0;
-
+        int prefixSum = 0; // Keeps track of the cumulative sum of elements
+        int count = 0; // Counts the number of subarrays with sum K
         HashMap<Integer, Integer> prefixSumFrequency = new HashMap<>();
+        prefixSumFrequency.put(0, 1); // Initializes the hashmap with a base case (prefix sum 0 appears once)
 
-        prefixSumFrequency.put(0, 1);
+        for (int numItem : numsArray) { // Iterate over each element in the array
+            prefixSum += numItem; // Update the cumulative sum
 
-        for (int numItem : numsArray) {
-            prefixSum += numItem;
-
-
+            // Check if the difference between current prefix sum and K has been seen before
             if (prefixSumFrequency.containsKey(prefixSum - K)) {
-                count += prefixSumFrequency.get(prefixSum - K);
+                count += prefixSumFrequency.get(prefixSum - K); // Increment count by the frequency of (prefixSum - K)
             }
 
+            // Add or update the current prefix sum's frequency in the hashmap
             prefixSumFrequency.put(prefixSum, prefixSumFrequency.getOrDefault(prefixSum, 0) + 1);
         }
-
-        return count;
+        return count; // Return the total count of subarrays with sum K
     }
 }
